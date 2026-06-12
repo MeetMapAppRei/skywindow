@@ -1,0 +1,44 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+
+# Local backup config (may contain paths)
+scripts/backup-config.local.json
+.vercel
+.env*.local
+
+.vercel
+
+# Capacitor native build artifacts (android/ and ios/ project folders are committed)
+android/.gradle/
+android/app/build/
+android/build/
+android/local.properties
+android/keystore.properties
+android/keystore/
+SkyWindow-release.aab
+ios/App/App/public/
+ios/App/Pods/
+ios/DerivedData/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+SkyWindow-debug.apk
+
+# Local source backup archives
+skywindow-src.zip

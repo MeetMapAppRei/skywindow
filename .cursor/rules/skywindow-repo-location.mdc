@@ -1,0 +1,11 @@
+---
+description: Canonical on-disk location for the SkyWindow project (Documents, not Desktop)
+alwaysApply: true
+---
+
+# SkyWindow — repository path
+
+- **This app’s project root is:** `C:\Users\areil\Documents\skywindow`
+- **Prefer this folder** for all file edits, terminal `cd`, and `npm` commands for SkyWindow.
+- An older copy may still exist at `C:\Users\areil\Desktop\skywindow`; treat it as **stale / do not use** unless the user explicitly says otherwise.
+- If the workspace is not opened at `Documents\skywindow`, ask the user to open that folder so paths and tooling stay consistent.

@@ -1,0 +1,24 @@
+---
+description: Agent must run Supabase and Vercel CLI work (migrations, link, env, deploy)—not hand steps only to the user
+alwaysApply: true
+---
+
+# SkyWindow — Supabase and Vercel operations
+
+Work from **`C:\Users\areil\Documents\skywindow`** unless the user opened another path on purpose.
+
+## Supabase (schema, RLS, auth-related DB issues)
+
+- **Do not** only tell the user to click the dashboard: use the **Supabase CLI from the terminal** (`npx supabase@latest …`) and/or the Supabase MCP tools when they are available.
+- For “table missing / schema cache” or migration drift: inspect `supabase/migrations/`, then run **`db push`**, **`migration up`**, or **`db execute`** against the linked project as appropriate; confirm the fix (e.g. REST probe or a small read query).
+- If the project is not linked: run **`supabase link`** (needs project ref) or guide only after **you** have attempted link and reported the exact blocker (e.g. not logged in).
+- If **`supabase/config.toml`** is missing, add/fix Supabase project config so CLI commands work; do not leave migrations as “SQL files only” when the user expects a live database to match.
+
+## Vercel (deploy, env, previews)
+
+- **Do not** only describe Vercel steps: use the **Vercel CLI** (`npx vercel …`) for **link**, **env pull/list/add**, **deploy**, **logs**, and **promote** when the task needs it.
+- After DB changes that affect the client, verify **production/preview** env vars (`VITE_SUPABASE_*`, etc.) point at the same Supabase project you migrated.
+
+## When tools are blocked
+
+If login or tokens are missing, say what **you** ran, paste the **exact** error, and the **one** credential or UI action needed—then continue as soon as it is unblocked without re-asking the user to “go do Supabase/Vercel” for steps you can run yourself.

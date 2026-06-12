@@ -1,0 +1,6 @@
+{
+  "destinationDirectory": "E:\\Backups\\skywindow",
+  "requiredVolumeLabel": null,
+  "excludeDirs": ["node_modules", "dist", "dist-ssr"],
+  "intervalMinutes": 15
+}

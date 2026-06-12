@@ -1,0 +1,14 @@
+---
+- This is a React + Vite plain JavaScript project. Never use TypeScript.
+- All Supabase interactions must go through src/lib/supabase.js
+- All Anthropic usage must go through src/lib/anthropic.js (same-origin `/api/analyze-horizon` on Vercel / Vite dev)
+- Use functional components and React hooks only
+- Mobile-first CSS — design for 390px wide screens first
+- Never hardcode API keys — always use import.meta.env.VITE_*
+- Lucide React is the icon library — no other icon libraries
+- Keep each component under 150 lines where possible
+- Canonical project folder: C:\Users\areil\Documents\skywindow (ignore any stale copy under Desktop\skywindow)
+- Supabase: the agent runs Supabase CLI (and MCP when configured) for migrations, link, and DB fixes—see `.cursor/rules/supabase-vercel-ops.mdc`.
+- Vercel: the agent runs Vercel CLI for link, env, deploy, and logs when relevant—same rule file.
+- Product UX: before building optional controls (reset buttons, toggles, “apply” actions), call out when they add little value or are likely to fight auto-synced state. Prefer sensible defaults (auto behavior + short copy) and drag/edit overrides; say so to the user instead of shipping flaky complexity.
+---

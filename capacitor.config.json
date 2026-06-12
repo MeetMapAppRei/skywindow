@@ -1,0 +1,29 @@
+{
+  "appId": "com.skywindow.app",
+  "appName": "SkyWindow",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": false
+  },
+  "ios": {
+    "contentInset": "automatic"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": true,
+      "backgroundColor": "#0a0e1a",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false
+    },
+    "StatusBar": {
+      "style": "DARK",
+      "backgroundColor": "#0a0e1a"
+    },
+    "LocalNotifications": {
+      "iconColor": "#2dd4bf"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SkyWindow</string>
+    <string name="title_activity_main">SkyWindow</string>
+    <string name="package_name">com.skywindow.app</string>
+    <string name="custom_url_scheme">com.skywindow.app</string>
+</resources>
