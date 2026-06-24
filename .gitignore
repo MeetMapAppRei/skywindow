@@ -42,3 +42,4 @@ SkyWindow-debug.apk
 
 # Local source backup archives
 skywindow-src.zip
+.env*

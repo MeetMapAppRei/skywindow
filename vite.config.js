@@ -5,6 +5,7 @@ import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 import { runAnalyzeHorizon } from './server/analyzeHorizon.mjs'
+import { runDeleteAccount } from './server/deleteAccount.mjs'
 import { getSkyViewQuicklookLocation } from './server/skyviewQuicklook.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
@@ -34,6 +35,28 @@ export default defineConfig(({ mode }) => {
         return () => {
           server.middlewares.use(async (req, res, next) => {
             const pathname = (req.originalUrl ?? req.url ?? '').split('?')[0]
+            if (pathname === '/api/delete-account') {
+              if (req.method === 'OPTIONS') {
+                res.statusCode = 204
+                res.end()
+                return
+              }
+              if (req.method !== 'DELETE') {
+                res.statusCode = 405
+                res.setHeader('Content-Type', 'application/json')
+                res.end(JSON.stringify({ error: 'Method not allowed' }))
+                return
+              }
+              Object.assign(process.env, env)
+              const auth = req.headers.authorization
+              const { status, json } = await runDeleteAccount({
+                authorization: typeof auth === 'string' ? auth : '',
+              })
+              res.statusCode = status
+              res.setHeader('Content-Type', 'application/json')
+              res.end(JSON.stringify(json))
+              return
+            }
             if (pathname === '/api/skyview-image') {
               if (req.method === 'OPTIONS') {
                 res.statusCode = 204

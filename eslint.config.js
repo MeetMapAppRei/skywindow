@@ -5,7 +5,7 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default [
-  { ignores: ['dist', 'scripts/**'] },
+  { ignores: ['dist/**', 'ios/App/App/public/**', 'android/app/src/main/assets/public/**', 'scripts/**'] },
   {
     files: ['api/**/*.js', 'server/**/*.mjs', 'vite.config.js'],
     languageOptions: {

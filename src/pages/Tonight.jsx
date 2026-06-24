@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react'
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { Link, Navigate, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Settings } from 'lucide-react'
 import { supabase } from '../lib/supabase.js'
@@ -93,7 +93,6 @@ function TargetListSkeleton() {
 export default function Tonight() {
   const { t, i18n } = useTranslation()
   const { user, loading: authLoading } = useAuth()
-  const navigate = useNavigate()
   const location = useLocation()
   const [pageToast, setPageToast] = useState('')
   const {

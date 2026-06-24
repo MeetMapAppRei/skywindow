@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
+import { apiUrl } from './apiOrigin.js'
 
 const url = import.meta.env.VITE_SUPABASE_URL
 const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
@@ -31,6 +32,30 @@ export async function signUpWithProfile(email, password) {
 
 /** Permanently delete the signed-in user and cascaded app data (profiles, equipment, etc.). */
 export async function deleteSignedInAccount() {
-  const { error } = await supabase.auth.deleteUser()
-  if (error) throw error
+  const {
+    data: { session },
+    error: sessionError,
+  } = await supabase.auth.getSession()
+  if (sessionError) throw sessionError
+  if (!session?.access_token) {
+    throw new Error('You must be signed in to delete your account.')
+  }
+
+  const res = await fetch(apiUrl('/api/delete-account'), {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Bearer ${session.access_token}`,
+    },
+  })
+
+  let body = null
+  try {
+    body = await res.json()
+  } catch {
+    /* ignore non-JSON error bodies */
+  }
+
+  if (!res.ok) {
+    throw new Error(body?.error || `Account deletion failed (HTTP ${res.status}).`)
+  }
 }
